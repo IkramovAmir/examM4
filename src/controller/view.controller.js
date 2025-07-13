@@ -4,9 +4,11 @@ export default {
     async MAIN_PAGE(req, res) {
         try {
             let products = await req.readFile("products")
+            let orders = await req.readFile("order");
+            let orderL = orders.length;
             return res.render("index", {
                 jsFileName: "index",
-                products
+                products, orderL
             })
         } catch (err) {
             return globalError(err, res);

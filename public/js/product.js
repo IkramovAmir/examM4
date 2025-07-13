@@ -1,3 +1,5 @@
+let elNumProd = document.getElementById("numberProduct");
+
 document.querySelectorAll(".addcard").forEach(btn => btn.addEventListener("click", async (evt) => {
     evt.preventDefault();
     let isAdd;
@@ -11,11 +13,17 @@ document.querySelectorAll(".addcard").forEach(btn => btn.addEventListener("click
 
     const id = btn.dataset.id;
 
-    await fetch("/cart", {
+    let req = await fetch("/cart", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({id, isAdd})
     });
+
+
+
+    let res = await req.json();
+    console.log(res)
+    elNumProd.textContent = res.orderL;
 }));
