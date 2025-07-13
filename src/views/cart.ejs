@@ -1,0 +1,15 @@
+<div class="row">
+  <% products.forEach(product => { %>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <img class="card-img-top" width="450" height="300" src="<%= product.image %>" alt="..." />
+        <div class="card-body p-4">
+          <div class="text-center">
+            <h5 class="fw-bolder"><%= product.name %></h5>
+            <%= product.price %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% }) %>
+</div>
