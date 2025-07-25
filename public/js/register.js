@@ -1,5 +1,5 @@
 let token = window.localStorage.getItem("token");
-if(token)         window.location.href = "/";   
+if(token) window.location.href = "/";   
 form.addEventListener("submit", async evt => {
     evt.preventDefault();
     let formData = new FormData(evt.target);
@@ -16,5 +16,5 @@ form.addEventListener("submit", async evt => {
         let {accessToken} = res;
         window.localStorage.setItem("token", accessToken);
         window.location.href = "/";   
-    }
-})
+    };
+});

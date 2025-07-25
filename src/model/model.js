@@ -10,4 +10,4 @@ export const model = (req, res, next) => {
         return true
     };
     return next()
-}
+};

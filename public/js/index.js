@@ -13,5 +13,5 @@ document.getElementById("cart").addEventListener("click", async (evt) => {
     evt.preventDefault();
     window.location.href = "/carts"
 
+    
 });
-
