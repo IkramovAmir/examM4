@@ -23,7 +23,7 @@ app.use(viewRouter);
 app.use(cartRouter);
 app.use("/api", mainRouter);
 
-let {PORT} = serverConfig;
+let PORT = serverConfig.PORT;
 app.listen(PORT, () => console.log(`Server is running on ${PORT}-port`));
 
 // authentication

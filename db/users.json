@@ -34,5 +34,13 @@
         "username": "amirrr",
         "email": "amirrrr@gmail.com",
         "password": "11a6f0cf62d1fb92e1ad663f25d670cdec1aa46732c8fdc86f6a746af09da9ec"
+    },
+    {
+        "id": 7,
+        "email": "amirikromov30@gmail.com",
+        "password": {},
+        "username": "Amir",
+        "otp": "2896310",
+        "otpTime": 1754753817456
     }
 ]

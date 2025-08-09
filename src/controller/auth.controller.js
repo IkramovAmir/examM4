@@ -1,8 +1,8 @@
-import sha256 from "sha256";
 import { ClientError, globalError } from "shokhijakhon-error-handler"
-import { userLoginValidate, userLoginValidator, userRegisterValidate, userRegisterValidator } from "../utils/validator.js";
+import { userLoginValidate, userRegisterValidate } from "../utils/validator.js";
 import { jwtService } from "../lib/jwt.js";
 import { HashingService } from "../lib/hash.js";
+import { emailService } from "../utils/emailService.js";
 
 
 
@@ -16,6 +16,11 @@ export default {
             let users = await req.readFile("users");
             if(users.some((user) => user.email == newUser.email)) throw new ClientError("User already exists !", 400);
             newUser = {id: users.length ? users.at(-1).id + 1: 1, ...newUser, password: HashingService.hashPassword(newUser.password)};
+            let otp = Array.from({length: 6}, () => Math.ceil(Math.random() * 10)).join("");
+            let otpTime = Date.now() + 240000;
+            await emailService(newUser.email, otp);
+            newUser.otp = otp;
+            newUser.otpTime = otpTime;
             users.push(newUser)
             await req.writeFile("users", users);
             return res.status(201).json({message: "User successfullu registered !", status: 201, accessToken: jwtService.createToken({user_id: newUser.id, userAgent: req.headers["user-agent"]})})
